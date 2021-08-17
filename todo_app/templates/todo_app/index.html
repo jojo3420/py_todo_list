@@ -59,7 +59,7 @@
         <div class="toDoDiv">
             <ul class="list-group">
                 {% for todo in todos %}
-                <form action="delete_todo/" method="GET">
+                <form action="done_todo/" method="GET">
                     <div class="input-group" name='todo1'>
                         <li class="list-group-item">{{ todo.content }}</li>
                         <input type="hidden" id="todoNum" name="id" value="{{todo.id}}"/>

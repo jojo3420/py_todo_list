@@ -23,7 +23,7 @@ def add_todo(req):
     return HttpResponseRedirect(reverse('index'))
 
 
-def delete_todo(req):
+def done_todo(req):
     id = req.GET['id']
     # print(f'id: {id}')
     ## todo.delete()
