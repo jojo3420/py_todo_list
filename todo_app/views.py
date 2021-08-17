@@ -26,10 +26,18 @@ def add_todo(req):
 def delete_todo(req):
     id = req.GET['id']
     # print(f'id: {id}')
-    todo = Todo.objects.get(id=id)
-    # todo.delete()
-    if todo:
-        todo.is_done = True
-        todo.save()
+    ## todo.delete()
+
+    # 첫번째 방법 - 인스턴스
+    # todo = Todo.objects.get(id=id)
+    # print(f'todo type {type(todo)}')  # <class 'todo_app.models.Todo'>
+    # if todo:
+    #     todo.is_done = True
+    #     todo.save()
+
+    # 두번째 방법 - querySet
+    querySet = Todo.objects.filter(id=id)
+    # print(type(querySet)) # <class 'django.db.models.query.QuerySet'>
+    querySet.update(is_done=True)
     # return HttpResponse('delete todo')
     return HttpResponseRedirect(reverse('index'))
