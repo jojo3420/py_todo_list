@@ -9,7 +9,7 @@ from .models import Todo
 
 def index(req):
     # return HttpResponse('hello world')
-    todos = Todo.objects.all()
+    todos = Todo.objects.all().filter(is_done=False)
     # print(todos)
     data = {'todos': todos}
     return render(req, 'todo_app/index.html', data)
@@ -27,6 +27,9 @@ def delete_todo(req):
     id = req.GET['id']
     # print(f'id: {id}')
     todo = Todo.objects.get(id=id)
-    todo.delete()
+    # todo.delete()
+    if todo:
+        todo.is_done = True
+        todo.save()
     # return HttpResponse('delete todo')
     return HttpResponseRedirect(reverse('index'))
