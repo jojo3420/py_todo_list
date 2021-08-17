@@ -37,6 +37,7 @@ def delete_todo(req):
 
     # 두번째 방법 - querySet
     querySet = Todo.objects.filter(id=id)
+    # print(querySet) # <QuerySet [<Todo: Todo object (4)>]>
     # print(type(querySet)) # <class 'django.db.models.query.QuerySet'>
     querySet.update(is_done=True)
     # return HttpResponse('delete todo')
