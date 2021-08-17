@@ -47,3 +47,39 @@ def index(request):
   return HttpResonse('hello world')
 
 ```
+
+Model 
+---
+### model.py 모델 정의 
+```python
+from django.db import models
+
+class MyTableModel(models.Model):
+    some_field = models.CharField(max_length=256)
+    others_field = models.IntegerField()
+```
+
+
+### 최초 마이그레이션 생성하기
+migrations 디렉터리에 0001_inital.py 마이그레이션 생성됨
+이 명령어는 실제 db 에 적용하는 migration을 생성하고 이 마이그레이션은 청사진 또는 설계도 역활을 함
+
+```shell
+python manage.py makemigrations
+```
+
+
+### 마이그레이션 DB에 적용하기
+파이썬의 기본 테이블 생성가 개발자가 정의한 클래스가 DB 테이블로 생성 된다. 
+테이블 이름 규칙은 앱이름_클래스이름
+ex) my_todo_app_todo 형식으로 이름 지어짐
+
+```shell
+python manage.py migrate
+```
+
+
+
+
+
+
