@@ -59,13 +59,18 @@
         <div class="toDoDiv">
             <ul class="list-group">
                 {% for todo in todos %}
-                <form action="doneTodo/" method="GET">
+                <form action="doneTodo/" method="GET" id="mutationForm">
                     <div class="input-group" name='todo1'>
-                        <li class="list-group-item">{{ todo.content }}</li>
+                        <li class="list-group-item list-item-{{todo.id}}" data-id="{{ todo.id }}">{{ todo.content }}
+                        </li>
                         <input type="hidden" id="todoNum" name="id" value="{{todo.id}}"/>
                         <span class="input-group-addon">
                                 <button type="submit" class="custom-btn btn btn-danger">완료</button>
                             </span>
+<!--                        <span class="input-group-addon">-->
+<!--                            <button type="button" id="modify__btn" class="custom-btn btn btn-primary"-->
+<!--                                    data-id="{{ todo.id }}">수정</button>-->
+<!--                        </span>-->
                     </div>
                 </form>
                 {% endfor %}
@@ -76,5 +81,33 @@
         실전예제로 배우는 Django. Project1-TodoList
     </div>
 </div>
+<script>
+    // const btnModify = document.querySelector('#modify__btn')
+    // const items = document.querySelectorAll('.list-group-item')
+    // items.forEach(item => item.addEventListener('click', e => {
+    //         const id = parseInt(e.target.dataset.id, 10)
+    //     console.log({ id })
+    //     const todoField = document.querySelector(`.list-item-${id}`)
+    //     const inputField = document.createElement('input')
+    //     const tempText = todoField.textContent
+    //     // todoField.textContent = ''
+    //     inputField.value = tempText
+    //     todoField.appendChild(inputField)
+    //     todoField.addEventListener('focusout', () => {
+    //         console.log(tempText)
+    //         todoField.textContent = tempText
+    //     })
+    // }))
+    //
+    // btnModify.addEventListener('click', (e) => {
+    //     const id = parseInt(e.target.dataset.id, 10)
+    //     const todoField = document.querySelector(`.list-item-${id}`)
+    //     const xhr = new XMLHttpRequest()
+    //     xhr.open('POST', 'modifyTodo/')
+    //     xhr.send({content: todoField.textContent})
+    // })
+
+
+</script>
 </body>
 </html>
